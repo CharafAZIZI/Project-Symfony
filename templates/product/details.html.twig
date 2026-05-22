@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="page-card overflow-hidden">
+            <div class="row g-0">
+                <div class="col-md-5 d-flex align-items-center justify-content-center hero-panel" style="color: white; min-height: 360px; border-right: 3px solid var(--gold);">
+                    <div class="text-center p-4">
+                        <i class="fa-solid fa-box-open mb-4" style="font-size: 6rem; color: var(--gold);"></i>
+                        <h3 class="fw-bold">{{ product.category.name }}</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="p-5">
+                        <span class="badge bg-primary mb-3">{{ product.category.name }}</span>
+
+                        <h1 class="fw-bold mb-3" style="color: var(--navy);">{{ product.name }}</h1>
+
+                        <h2 class="fw-bold mb-4" style="color: var(--main-red);">
+                            {{ product.price }} DH
+                        </h2>
+
+                        <p class="text-muted fs-5">
+                            {{ product.description }}
+                        </p>
+
+                        <hr>
+
+                        <p>
+                            <strong>Stock :</strong>
+                            {% if product.stock > 0 %}
+                                <span style="color: var(--navy);">Disponible ({{ product.stock }})</span>
+                            {% else %}
+                                <span style="color: var(--main-red);">Rupture de stock</span>
+                            {% endif %}
+                        </p>
+
+                        {% if product.stock > 0 %}
+                            <form action="{{ path('app_cart_add', {id: product.id}) }}" method="POST" class="mt-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Quantité</label>
+                                    <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" class="form-control" style="max-width: 140px; border-color: var(--navy);">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fa-solid fa-cart-plus me-1"></i> Ajouter au panier
+                                </button>
+
+                                <a href="{{ path('app_product_list') }}" class="btn btn-outline-primary btn-lg ms-2">
+                                    Continuer
+                                </a>
+                            </form>
+                        {% else %}
+                            <button class="btn btn-secondary btn-lg" disabled>
+                                Produit indisponible
+                            </button>
+
+                            <a href="{{ path('app_product_list') }}" class="btn btn-outline-primary btn-lg ms-2">
+                                Retour
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
