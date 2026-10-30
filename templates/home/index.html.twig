@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil — RedShop{% endblock %}
+
+{% block body %}
+<div class="row align-items-center">
+    <div class="col-lg-6">
+        <span class="badge bg-primary mb-3">Boutique en ligne</span>
+
+        <h1 class="display-4 fw-bold mb-3">
+            Achetez simplement, rapidement et en toute confiance.
+        </h1>
+
+        <p class="lead text-muted mb-4">
+            RedShop vous permet de parcourir les catégories, consulter les produits
+            et gérer votre panier dans une interface simple et moderne.
+        </p>
+
+        <a href="{{ path('app_product_list') }}" class="btn btn-primary btn-lg me-2">
+            Voir les produits
+        </a>
+
+        <a href="{{ path('app_category_browse') }}" class="btn btn-outline-primary btn-lg">
+            Explorer les catégories
+        </a>
+    </div>
+
+    <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="page-card p-5 text-center hero-panel" style="color: white; border-radius: 12px; border: 2px solid var(--gold);">
+            <i class="fa-solid fa-cart-shopping mb-4" style="font-size: 6rem; color: var(--gold);"></i>
+            <h2 class="fw-bold">Votre panier, vos choix</h2>
+            <p class="mb-0">
+                Ajoutez vos produits préférés et consultez le total directement.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 g-4">
+    <div class="col-md-4">
+        <div class="page-card p-4 text-center" style="border-bottom: 4px solid var(--gold);">
+            <i class="fa-solid fa-list mb-3" style="font-size: 2.2rem; color: var(--main-red);"></i>
+            <h5 class="fw-bold" style="color: var(--navy);">Catégories</h5>
+            <p class="text-muted mb-0">Navigation claire par type de produit.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="page-card p-4 text-center" style="border-bottom: 4px solid var(--gold);">
+            <i class="fa-solid fa-box mb-3" style="font-size: 2.2rem; color: var(--main-red);"></i>
+            <h5 class="fw-bold" style="color: var(--navy);">Produits</h5>
+            <p class="text-muted mb-0">Affichage dynamique depuis la base de données.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="page-card p-4 text-center" style="border-bottom: 4px solid var(--gold);">
+            <i class="fa-solid fa-user-shield mb-3" style="font-size: 2.2rem; color: var(--main-red);"></i>
+            <h5 class="fw-bold" style="color: var(--navy);">Compte client</h5>
+            <p class="text-muted mb-0">Inscription, connexion et profil sécurisé.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

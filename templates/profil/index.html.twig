@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil — RedShop{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-lg-9">
+
+        <div class="page-card overflow-hidden">
+            <div class="row g-0">
+
+                <div class="col-md-4 d-flex align-items-center justify-content-center hero-panel" style="color: white; border-right: 3px solid var(--gold);">
+                    <div class="text-center p-5">
+                        <div class="mb-4">
+                            <i class="fa-solid fa-user-circle" style="font-size: 6rem; color: var(--gold);"></i>
+                        </div>
+
+                        <h2 class="fw-bold mb-2">Mon Profil</h2>
+
+                        <p class="mb-0">
+                            Bienvenue, {{ app.user.fullName|default(app.user.email) }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="p-5">
+                        <h3 class="section-title mb-4">Informations du compte</h3>
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+                                <div class="p-4 border rounded-3 h-100" style="border-color: var(--navy) !important;">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3" style="color: var(--main-red);">
+                                            <i class="fa-solid fa-user" style="font-size: 1.8rem;"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Nom complet</h6>
+                                            <h5 class="fw-bold mb-0" style="color: var(--navy);">
+                                                {{ app.user.fullName|default('Non renseigné') }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 border rounded-3 h-100" style="border-color: var(--navy) !important;">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3" style="color: var(--main-red);">
+                                            <i class="fa-solid fa-envelope" style="font-size: 1.8rem;"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Email</h6>
+                                            <h5 class="fw-bold mb-0" style="word-break: break-word; color: var(--navy);">
+                                                {{ app.user.email }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 border rounded-3 h-100" style="border-color: var(--navy) !important;">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3" style="color: var(--main-red);">
+                                            <i class="fa-solid fa-shield-halved" style="font-size: 1.8rem;"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Rôle</h6>
+                                            <h5 class="fw-bold mb-0" style="color: var(--navy);">
+                                                {{ app.user.roles[0]|default('ROLE_USER') }}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-4 border rounded-3 h-100" style="border-color: var(--gold) !important; background: #fffbf0;">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="me-3" style="color: var(--gold);">
+                                            <i class="fa-solid fa-circle-check" style="font-size: 1.8rem;"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-muted mb-1">Statut</h6>
+                                            <h5 class="fw-bold mb-0" style="color: var(--gold-dark);">
+                                                Compte vérifié
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-5 d-flex gap-2">
+                            <a href="{{ path('app_product_list') }}" class="btn btn-primary">
+                                Voir les produits
+                            </a>
+
+                            <a href="{{ path('app_cart') }}" class="btn btn-outline-primary">
+                                Mon panier
+                            </a>
+
+                            <a href="{{ path('app_logout') }}" class="btn btn-dark">
+                                Déconnexion
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+<div class="mb-4">
+    <a href="{{ path('app_category_browse') }}" class="btn btn-outline-primary btn-sm mb-3">
+        <i class="fa-solid fa-arrow-left me-1"></i> Retour aux catégories
+    </a>
+
+    <h1 class="section-title">{{ category.name }}</h1>
+    <p class="text-muted mt-2">{{ category.description }}</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in products %}
+        <div class="col">
+            <div class="card product-card h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold" style="color: var(--navy);">{{ product.name }}</h5>
+
+                    <p class="text-muted">
+                        {{ product.description|slice(0, 90) }}...
+                    </p>
+
+                    <p class="fw-bold fs-5" style="color: var(--main-red);">
+                        {{ product.price }} DH
+                    </p>
+
+                    <a href="{{ path('app_product_details', {id: product.id}) }}" class="btn btn-outline-primary w-100">
+                        Voir détails
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Aucun produit dans cette catégorie.
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

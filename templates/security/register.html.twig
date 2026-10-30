@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-header text-white" style="background: linear-gradient(90deg, var(--dark-navy), var(--navy)); border-bottom: 3px solid var(--gold);">
+                <h3 class="mb-0"><i class="fa-solid fa-user-plus me-2" style="color: var(--gold);"></i> Inscription</h3>
+            </div>
+            <div class="card-body p-4">
+                {{ form_start(registrationForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form_row(registrationForm.firstName, {'attr': {'class': 'form-control', 'style': 'border-color: var(--navy);'}}) }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control', 'style': 'border-color: var(--navy);'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'style': 'border-color: var(--navy);'}}) }}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form_row(registrationForm.plainPassword.first, {'attr': {'class': 'form-control', 'style': 'border-color: var(--navy);'}}) }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form_row(registrationForm.plainPassword.second, {'attr': {'class': 'form-control', 'style': 'border-color: var(--navy);'}}) }}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-gold w-100 mb-3 btn-lg">
+                        <i class="fas fa-user-plus"></i> S'inscrire
+                    </button>
+                {{ form_end(registrationForm) }}
+
+                <hr class="my-4">
+                <div class="text-center">
+                    <a href="{{ path('app_login') }}" class="btn btn-link" style="color: var(--main-red);">Déjà un compte ? Connectez-vous</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

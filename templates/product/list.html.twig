@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+<div class="mb-4">
+    <h1 class="section-title">Catalogue des produits</h1>
+    <p class="text-muted mt-2">
+        Découvrez les articles disponibles dans notre boutique.
+    </p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in products %}
+        <div class="col">
+            <div class="card product-card h-100">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-primary">{{ product.category.name }}</span>
+                        <span class="fw-bold" style="color: var(--main-red);">{{ product.price }} DH</span>
+                    </div>
+
+                    <h5 class="fw-bold" style="color: var(--navy);">{{ product.name }}</h5>
+
+                    <p class="text-muted">
+                        {{ product.description|slice(0, 90) }}...
+                    </p>
+
+                    {% if product.stock > 0 %}
+                        <p class="small mb-3" style="color: var(--navy);">
+                            <i class="fa-solid fa-check"></i> En stock
+                        </p>
+                    {% else %}
+                        <p class="small mb-3" style="color: var(--main-red);">
+                            <i class="fa-solid fa-xmark"></i> Rupture de stock
+                        </p>
+                    {% endif %}
+
+                    <a href="{{ path('app_product_details', {id: product.id}) }}" class="btn btn-outline-primary w-100">
+                        Voir le produit
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">Aucun produit disponible.</div>
+    {% endfor %}
+</div>
+{% endblock %}
